@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+<h2>简陋的代理池</h2>
+<P>单机，勿压</P>
+<p>init_数据库待初始化数量：{{init_count}}</p>
+<p>现数据库中剩余http代理：{{http_count}}</p>
+<p><a href="/get?scheme=http">返回一个随机的http代理</a></p>
+<p>现数据库中剩余https代理：{{https_count}}</p>
+<p><a href="/get?scheme=https">返回一个随机的https代理</a></p>
+</body>
+</html>
