@@ -12,7 +12,7 @@ class InitProxy:
 
     def check(self):
         """
-        检测代理，如果
+        检测代理
         :return:
         """
 

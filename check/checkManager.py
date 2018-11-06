@@ -7,11 +7,20 @@ from settings import REFRESH_TIME,RE_HTTP_LIMIT,RE_HTTPS_LIMIT
 
 
 def init_db_2_db():
+    """
+    init中的代理经检测放入存储库中
+    :return:None
+    """
     init = InitProxy()
     init.run()
 
 
 def refresh_item(scheme):
+    """
+    数据库中的代理再检测
+    :param scheme: 'http' or 'https'
+    :return: None
+    """
     ref = Refresh()
     ref.run(scheme)
 
@@ -20,6 +29,10 @@ db = RedisRefreshClient()
 
 
 def check_manager():
+    """
+    检测模块运行管理
+    :return: None
+    """
     while True:
         http_count = db.count('http')
         https_count = db.count('https')

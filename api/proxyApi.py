@@ -11,12 +11,18 @@ app = Flask(__name__,
             )
 
 sys.path.append('..')
+# redis存储库对象
 db = RedisRefreshClient()
+# init_redis存储库对象
 init_db = RedisInitClient()
 
 
 @app.route(r'/', methods=['GET'])
 def index():
+    """
+    主页视图函数
+    :return: 返回html页面
+    """
     http_count = db.count('http')
     https_count = db.count('https')
     init_count = init_db.count()
@@ -31,6 +37,10 @@ def index():
 
 @app.route(r'/get', methods=['GET'])
 def get():
+    """
+    ip获取视图函数
+    :return: 返回符合条件的ip地址
+    """
     scheme = request.args.get('scheme', '')
     if scheme == 'http':
         item = db.random(scheme)
@@ -46,6 +56,10 @@ def get():
 
 @app.route(r'/count', methods=['GET'])
 def count():
+    """
+    返回代理池中的ip代理数量
+    :return:
+    """
     scheme = request.args.get('scheme', '')
     if scheme == 'http':
         count = db.count(scheme)
@@ -62,6 +76,10 @@ def count():
 
 
 def api_run():
+    """
+    运行函数
+    :return: None
+    """
     app.run(host=API_HOST, port=API_PORT)
 
 

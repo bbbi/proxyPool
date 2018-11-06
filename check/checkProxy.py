@@ -5,6 +5,11 @@ from settings import HTTP_CHECK_URLS_TUPLE, HTTPS_CHECK_URLS_TUPLE, CHECK_COUNT,
 
 
 def checkProxy(item={}):
+    """
+    检测工厂函数
+    :param item: item字典
+    :return: None
+    """
     if item:
         if item['scheme'] == 'http':
             return checkHttp(item)
